@@ -28,104 +28,111 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblTitle = new Label();
-            lblId = new Label();
-            txtId = new TextBox();
+            btnLogin = new Button();
             txtPw = new TextBox();
             lblPw = new Label();
-            btnLogin = new Button();
+            txtId = new TextBox();
+            lblId = new Label();
+            lblTitle = new Label();
             SuspendLayout();
             // 
-            // lblTitle
+            // btnLogin
             // 
-            lblTitle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            lblTitle.Location = new Point(46, 30);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(292, 32);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "さくらハードウェア台帳システム";
-            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblId
-            // 
-            lblId.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblId.AutoSize = true;
-            lblId.Font = new Font("Yu Gothic UI Semibold", 15.75F, FontStyle.Bold);
-            lblId.Location = new Point(72, 100);
-            lblId.Name = "lblId";
-            lblId.Size = new Size(34, 30);
-            lblId.TabIndex = 1;
-            lblId.Text = "ID";
-            lblId.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // txtId
-            // 
-            txtId.Font = new Font("Yu Gothic UI Semibold", 15.75F, FontStyle.Bold);
-            txtId.Location = new Point(153, 97);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(160, 35);
-            txtId.TabIndex = 2;
+            btnLogin.BackColor = Color.FromArgb(175, 211, 226);
+            btnLogin.FlatStyle = FlatStyle.Popup;
+            btnLogin.Font = new Font("Meiryo UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            btnLogin.Location = new Point(130, 240);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(241, 40);
+            btnLogin.TabIndex = 17;
+            btnLogin.Text = "ログイン";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // txtPw
             // 
             txtPw.Font = new Font("Yu Gothic UI Semibold", 15.75F, FontStyle.Bold);
-            txtPw.Location = new Point(153, 157);
+            txtPw.Location = new Point(211, 177);
             txtPw.Name = "txtPw";
+            txtPw.PasswordChar = '*';
             txtPw.Size = new Size(160, 35);
-            txtPw.TabIndex = 4;
+            txtPw.TabIndex = 16;
+            txtPw.KeyDown += txtPw_KeyDown;
             // 
             // lblPw
             // 
             lblPw.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblPw.AutoSize = true;
             lblPw.Font = new Font("Yu Gothic UI Semibold", 15.75F, FontStyle.Bold);
-            lblPw.Location = new Point(72, 160);
+            lblPw.Location = new Point(130, 180);
             lblPw.Name = "lblPw";
             lblPw.Size = new Size(45, 30);
-            lblPw.TabIndex = 3;
+            lblPw.TabIndex = 15;
             lblPw.Text = "PW";
             lblPw.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // btnLogin
+            // txtId
             // 
-            btnLogin.Font = new Font("Meiryo UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            btnLogin.Location = new Point(72, 220);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(241, 40);
-            btnLogin.TabIndex = 5;
-            btnLogin.Text = "ログイン";
-            btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += btnLogin_Click;
+            txtId.Font = new Font("Yu Gothic UI Semibold", 15.75F, FontStyle.Bold);
+            txtId.Location = new Point(211, 117);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(160, 35);
+            txtId.TabIndex = 14;
+            txtId.KeyDown += txtId_KeyDown;
+            // 
+            // lblId
+            // 
+            lblId.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblId.AutoSize = true;
+            lblId.Font = new Font("Yu Gothic UI Semibold", 15.75F, FontStyle.Bold);
+            lblId.Location = new Point(130, 120);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(34, 30);
+            lblId.TabIndex = 13;
+            lblId.Text = "ID";
+            lblId.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblTitle
+            // 
+            lblTitle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            lblTitle.Location = new Point(104, 50);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(292, 32);
+            lblTitle.TabIndex = 12;
+            lblTitle.Text = "さくらハードウェア台帳システム";
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Azure;
-            ClientSize = new Size(384, 291);
+            ClientSize = new Size(500, 330);
             Controls.Add(btnLogin);
             Controls.Add(txtPw);
             Controls.Add(lblPw);
             Controls.Add(txtId);
             Controls.Add(lblId);
             Controls.Add(lblTitle);
-            Font = new Font("Meiryo UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ForeColor = Color.Indigo;
             Name = "Login";
-            Text = "Login";
+            Controls.SetChildIndex(lblTitle, 0);
+            Controls.SetChildIndex(lblId, 0);
+            Controls.SetChildIndex(txtId, 0);
+            Controls.SetChildIndex(lblPw, 0);
+            Controls.SetChildIndex(txtPw, 0);
+            Controls.SetChildIndex(btnLogin, 0);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label lblTitle;
-        private Label lblId;
-        private TextBox txtId;
+        private Button btnLogin;
         private TextBox txtPw;
         private Label lblPw;
-        private Button btnLogin;
+        private TextBox txtId;
+        private Label lblId;
+        private Label lblTitle;
     }
 }

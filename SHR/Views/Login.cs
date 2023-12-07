@@ -1,6 +1,5 @@
 ﻿using SHR.Event;
 using SHR.Library;
-using SHR.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +12,14 @@ using System.Windows.Forms;
 
 namespace SHR.Views
 {
-    public partial class Login : Form
+    public partial class Login : BaseForm
     {
         public Login()
         {
             InitializeComponent();
         }
 
-
-
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void execute_login()
         {
             // 入力チェック
             var error = new CheckError();
@@ -38,12 +35,38 @@ namespace SHR.Views
             }
 
             // メッセージ表示
-            if (error.HasError()) 
+            if (error.HasError())
             {
                 MessageBox.Show(error.GetError(), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }　else { 
-                MessageBox.Show("ログイン成功", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            execute_login();
+        }
+
+        // PW入力後Enterでログイン処理
+        private void txtPw_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                execute_login();
+            }
+        }
+
+        // EnterでPW入力に移動
+        private void txtId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPw.Focus();
             }
         }
     }
