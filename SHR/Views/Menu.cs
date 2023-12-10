@@ -1,28 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using SHR.Models;
+using SHR.Views.Base;
 
 namespace SHR.Views
 {
-    public partial class Menu : BaseForm
+    public partial class Menu : InnerBaseForm
     {
         public Menu()
         {
             InitializeComponent();
+            // 子フォームの閉じるボタン無効化
+            btnInnerClose_Disable();
         }
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            // ログインフォーム作成
-            Login login = new Login();
-            // 表示（OK以外ならアプリケーション終了）
-            if (login.ShowDialog() != DialogResult.OK) { Close(); }
+            cmbLocation.DataSource = Locations.GetLocations();
+            cmbLocation.DisplayMember = nameof(Locations.Name);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NextFormType = typeof(DeviceRegistration);
+            Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            NextFormType = typeof(DeviceList);
+            Close();
         }
     }
 }

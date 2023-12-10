@@ -7,10 +7,18 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>SHR.Startup</StartupObject>
+    <Title>SakuraHardwareRegister</Title>
+    <Product>SakuraHardwareRegister</Product>
+    <Company>CerasusTp</Company>
+    <Authors>CerasusTp</Authors>
+    <AssemblyVersion>0.0.0.1</AssemblyVersion>
+    <Version>$(AssemblyVersion)</Version>
+    <Copyright>CerasusTp</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.24" />
+    <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
     <PackageReference Include="MySql.Data" Version="8.0.33" />
   </ItemGroup>
 
@@ -25,6 +33,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Views\DeviceList.cs" />
   </ItemGroup>
 
   <ItemGroup>

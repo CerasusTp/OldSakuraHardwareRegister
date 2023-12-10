@@ -1,5 +1,6 @@
-﻿using SHR.Event;
-using SHR.Library;
+﻿using SHR.Library;
+using SHR.Models;
+using SHR.Views.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,11 +13,14 @@ using System.Windows.Forms;
 
 namespace SHR.Views
 {
-    public partial class Login : BaseForm
+    public partial class Login : InnerBaseForm
     {
         public Login()
         {
             InitializeComponent();
+            // 子フォームの閉じるボタン無効化
+            // 開発するときにログイン面倒くさいから無効化
+            //btnInnerClose_Disable();
         }
 
         private void execute_login()
@@ -29,7 +33,7 @@ namespace SHR.Views
             // ログインチェック（入力チェックでエラーの場合は処理しない）
             if (!error.HasError())
             {
-                var user = UsersEvent.GetUser(txtId.Text, txtPw.Text);
+                var user = Users.GetUser(txtId.Text, txtPw.Text);
                 if (user is null) { error.AddError("IDまたはPWが異なります"); }
                 else if (!user.Active_Flag) { error.AddError("ユーザーが削除されています"); }
             }
@@ -42,7 +46,6 @@ namespace SHR.Views
             }
             else
             {
-                DialogResult = DialogResult.OK;
                 Close();
             }
         }
@@ -57,6 +60,7 @@ namespace SHR.Views
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 execute_login();
             }
         }
@@ -66,6 +70,7 @@ namespace SHR.Views
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 txtPw.Focus();
             }
         }
